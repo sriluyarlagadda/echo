@@ -107,7 +107,20 @@ func (m *EchoMessage) Send() (responseData []byte, err error) {
 
 	packagePayLoadLength := len(echoMessagePacket)
 
-	laddr, err := net.ResolveIPAddr("ip", "192.168.1.84")
+	var localAddr string
+	addrs, _ := net.InterfaceAddrs()
+	for _, addr := range addrs {
+		if ipnet, ok := addr.(*net.IPNet); ok {
+
+			if ipnet.IP.IsLoopback() != true && ipnet.IP.To4() != nil {
+				localAddr = ipnet.IP.String()
+				fmt.Println(localAddr)
+			}
+
+		}
+	}
+
+	laddr, err := net.ResolveIPAddr("ip", localAddr)
 	if err != nil {
 		return nil, err
 
