@@ -22,3 +22,5 @@ Set the ip address(IPV4) and the data you want to send
 Receive the response
 
     response, err := echoMessage.Send()
+
+Done!
