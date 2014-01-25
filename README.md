@@ -11,6 +11,14 @@ Import echo client packge into your project.
 
 Create a new ICMP message with a particular identifier and sequence number,
 
-    	echoMessage := echo.NewMessage(10, 245)
+    echoMessage := echo.NewMessage(10, 245)
+    
+
+Set the ip address(IPV4) and the data you want to send
+
+    err := echoMessage.Set(ipAddr, []byte(data))
 
 
+Receive the response
+
+    response, err := echoMessage.Send()
