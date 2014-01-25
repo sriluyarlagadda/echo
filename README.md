@@ -9,5 +9,8 @@ Import echo client packge into your project.
     import("github.com/sriluyarlagadda/echo")
 
 
+Create a new ICMP message with a particular identifier and sequence number,
+
+    	echoMessage := echo.NewMessage(10, 245)
 
 
